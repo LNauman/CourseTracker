@@ -1,0 +1,35 @@
+<h1>My Courses</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Course Title</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @teacher_courses.each do |course| %>
+			<tr>
+				<td><%= course.title %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h1>Other Courses</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Course Title</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @not_teacher_courses.each do |course| %>
+			<tr>
+				<td><%= course.title %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Back', user_session_path %>

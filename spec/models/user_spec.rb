@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe User do
+	it { should have_many :courses }
+	it { should have_many(:semesters).through(:courses) }
+
 	it { should have_valid(:email).when('john@example.com', 'sally.doe@example.com') }
   it { should_not have_valid(:email).when('', nil, 'hellooo') }   
 

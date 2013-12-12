@@ -1,5 +1,12 @@
 CourseTracker::Application.routes.draw do
+  resources :courses
+
   devise_for :users
+
+  resources :users, only: [:show, :index] do
+    resources :courses
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
