@@ -20,7 +20,7 @@ end
 FactoryGirl.define do
 	factory :enrollment do
 		student_id 1
-		course_id 2
+		course_id 1
 		grade 3.33
 	end
 end

@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 	def new
 		@course = Course.new
 	end
-
+	
   def index
   	@user = current_user
   	@all_courses = Course.all

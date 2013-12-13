@@ -12,7 +12,7 @@ feature 'user signs in', %Q{
 # * If I specify an invalid email and password, I remain unauthenticated
 # * If I am already signed in, I can't sign in again
   
-  let(:user) {FactoryGirl.create(:user)}
+  let(:user) { FactoryGirl.create(:user) }
   scenario 'an existing user specifies a valid email address and password' do
     visit root_path
     click_link 'Sign In'
@@ -56,7 +56,6 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Invalid email or password.')
     expect(page).to_not have_content('Sign out')
-  
   end
 
   scenario 'an already authenticated user cannot re-sign in' do
@@ -74,6 +73,5 @@ feature 'user signs in', %Q{
     visit new_user_session_path
 
     expect(page).to have_content('You are already signed in.')
-  
   end
 end

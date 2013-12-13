@@ -1,0 +1,12 @@
+<p> Welcome to your Course Tracker </p>
+
+	<% if @user == current_user && @user.role == 'Student' %>
+		<ul>
+			<li><%= link_to "View Courses", courses_path %></li>
+			<li><%= link_to "My Enrollments", enrollments_path %></li>
+		</ul>
+	<% else %>
+		<ul>
+			<li><%= link_to "View Courses", courses_path %></li>
+		</ul>
+	<% end %>

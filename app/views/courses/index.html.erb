@@ -1,3 +1,4 @@
+<% if current_user.role =='Teacher' %>
 <h1>My Courses</h1>
 <table>
 	<thead>
@@ -32,4 +33,26 @@
 	</tbody>
 </table>
 
-<%= link_to 'Back', user_session_path %>
+<% else %>
+
+<h1>Courses Offered</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Course Title</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @all_courses.each do |course| %>
+			<tr>
+				<td><%= course.title %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<% end %>
+
+
+<%= link_to 'Back', '#' %>

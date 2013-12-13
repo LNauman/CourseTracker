@@ -1,4 +1,6 @@
 CourseTracker::Application.routes.draw do
+  resources :enrollments
+
   resources :courses
 
   devise_for :users
