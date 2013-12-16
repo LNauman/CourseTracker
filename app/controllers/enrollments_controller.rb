@@ -18,4 +18,33 @@ class EnrollmentsController < ApplicationController
 		end
 	end
 
+	 def edit
+    # @user = current_user
+    # @course = Course.find_by(teacher_id: @user.id)
+    # @students = []
+    # @all_enroll = Enrollment.where(course_id: @course.id)
+	  redirect_to enrollment_path
+	  end
+
+	  def update
+	    if @user = current_user
+	    	@course = Course.find_by(teacher_id: @user.id)     
+	      @enrollment = Enrollment.find_by(course_id: @course)
+	      	if @enrollment.update_attributes(grade: params[:enrollment][:grade].to_f)
+	        	redirect_to @course, notice: "Grade has been updated"
+	        	return
+	      	else
+	        	redirect_to @enrollment, notice: "Grade has not been updated"
+	    		end
+	    end
+	  end
+
+	  def show
+			@enrollment = Enrollment.find(params[:id])
+	  end
+
+	  protected
+  		def enrollment_params
+    		params.require(:enrollment).permit(:grade, :course_id, :student_id)
+    	end
 end

@@ -15,7 +15,7 @@
 				<td><%= student.first_name %></td>
 				<td><%= student.last_name %></td>
 				<td><%= @enrollment.grade %></td>
-				<td><%= link_to 'Edit', '#' %></td>
+				<td><%= link_to 'Edit', edit_enrollment_path(@enrollment) %></td>
 			</tr>
 		<% end %>
 	</tbody>
