@@ -1,5 +1,4 @@
 <h1> Welcome to your Course Tracker </h1>
-
 	<% if @user == current_user && @user.role == 'Student' %>
 		<ul>
 			<li><%= link_to "View Courses", courses_path %></li>

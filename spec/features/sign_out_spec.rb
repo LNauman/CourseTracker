@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'user signs out', %Q{
-	As a user
-	I want to sign out
-	So that I can end my session
+As a user
+I want to sign out
+So that I can end my session
 } do
 
 	# ACCEPTANCE CRITERIA
