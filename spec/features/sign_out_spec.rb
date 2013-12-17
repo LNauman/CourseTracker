@@ -6,12 +6,13 @@ feature 'user signs out', %Q{
 	So that I can end my session
 } do
 
-# ACCEPTANCE CRITERIA
-#* I must click sign out
-#* I must be notified I have signed out successfully
-#* I must b redirected to the sign in page
+	# ACCEPTANCE CRITERIA
+	#* I must click sign out
+	#* I must be notified I have signed out successfully
+	#* I must b redirected to the sign in page
 
 	let(:user) { FactoryGirl.create(:user) }
+
 	scenario 'click on sgn out, logged out of account' do
 		visit root_path
 		click_link 'Sign In'

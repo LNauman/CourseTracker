@@ -6,13 +6,14 @@ feature 'user signs in', %Q{
   So that I can access my account
 } do
   
-# Acceptance  Criteria:
-# * If I specify a valid, previously registered email and password,
-#   I am authenticated and gain access to the system
-# * If I specify an invalid email and password, I remain unauthenticated
-# * If I am already signed in, I can't sign in again
+  # Acceptance  Criteria:
+  # * If I specify a valid, previously registered email and password,
+  #   I am authenticated and gain access to the system
+  # * If I specify an invalid email and password, I remain unauthenticated
+  # * If I am already signed in, I can't sign in again
   
   let(:user) { FactoryGirl.create(:user) }
+  
   scenario 'an existing user specifies a valid email address and password' do
     visit root_path
     click_link 'Sign In'

@@ -6,11 +6,11 @@ feature 'user signs up', %Q{
   So that I can make changes and view other lists
 } do
 
-# Acceptance Criteria: 
-# * I must specify a valid email address
-# * I must specify a password, and confirm that password
-# * If I do not perform the above, I get an error message
-# * If I specify valid information, I register my account and am authenticated
+  # Acceptance Criteria: 
+  # * I must specify a valid email address
+  # * I must specify a password, and confirm that password
+  # * If I do not perform the above, I get an error message
+  # * If I specify valid information, I register my account and am authenticated
 
   scenario 'specify valid and required information' do
     visit root_path

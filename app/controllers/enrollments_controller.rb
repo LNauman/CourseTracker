@@ -6,7 +6,6 @@ class EnrollmentsController < ApplicationController
 			@student_enrollments = Enrollment.where(student_id: @user.id)
 			@course_titles = []
 			@grades = []
-
 			@student_enrollments.each do |enrollment|
 				@title = Course.find(enrollment.course_id).title
 				@grade = enrollment.grade
@@ -18,33 +17,46 @@ class EnrollmentsController < ApplicationController
 		end
 	end
 
-	 def edit
-    # @user = current_user
-    # @course = Course.find_by(teacher_id: @user.id)
-    # @students = []
-    # @all_enroll = Enrollment.where(course_id: @course.id)
+	def edit
 	  redirect_to enrollment_path
-	  end
+	end
 
-	  def update
-	    if @user = current_user
-	    	@course = Course.find_by(teacher_id: @user.id)     
-	      @enrollment = Enrollment.find_by(course_id: @course)
-	      	if @enrollment.update_attributes(grade: params[:enrollment][:grade].to_f)
-	        	redirect_to @course, notice: "Grade has been updated"
-	        	return
-	      	else
-	        	redirect_to @enrollment, notice: "Grade has not been updated"
-	    		end
-	    end
-	  end
+  def update
+    @enrollment = Enrollment.find(params[:id])
 
-	  def show
-			@enrollment = Enrollment.find(params[:id])
-	  end
+      if @enrollment.course.teacher == current_user
+        if @enrollment.update_attributes(grade: params[:enrollment][:grade])
+          redirect_to @enrollment, notice: 'Grade has been updated'
+        else
+          redirect_to @enrollment, notice: 'Failed to update, must be a number between 0 and 4'
+        end
+      else
+        redirect_to @enrollment, notice: 'Not authorized to edit this field'
+      end
+  end
+  
+  #   if @user = current_user 
+  # 	@course = Course.find_by(teacher_id: @user.id)     
+  #   @enrollment = Enrollment.find_by(course_id: @course)
+  #       if @enrollment.update_attributes(grade: params[:enrollment][:grade].to_f)
+  #       	redirect_to @course, notice: "Grade has been updated"
+  #       	return
+  #     	else
+  #       	redirect_to @enrollment, notice: "Must be a number between 0 and 4"
+  #   		end
+  #   end
+  # end
 
-	  protected
-  		def enrollment_params
-    		params.require(:enrollment).permit(:grade, :course_id, :student_id)
-    	end
+  def show
+		@enrollment = Enrollment.find(params[:id])
+    # @user = current_user
+    # @course = Course.find_by(teacher_id: @user.id)     
+    # @enrollment = Enrollment.find_by(course_id: @course)
+  end
+
+	protected
+	
+  def enrollment_params
+  	params.require(:enrollment).permit(:grade, :course_id, :student_id)
+  end
 end
