@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
   has_many :courses, foreign_key: 'teacher_id'
+  has_many :enrollments, foreign_key: 'student_id'
   has_many :semesters, through: :courses
 
   validates_presence_of :first_name

@@ -12,7 +12,8 @@ So that I can know how I'm doing
 	#  courses I am enrolled in
 
 	let(:user)         { FactoryGirl.create(:user, role: 'Student') }
-	let(:course)       { FactoryGirl.create(:course) }
+	let(:semester)     { FactoryGirl.create(:semester) }
+	let(:course)       { FactoryGirl.create(:course, semester_id: semester.id) }
 	let!(:enrollment1) { FactoryGirl.create(:enrollment, course_id: course.id, student_id: user.id) }
 
 	scenario "Clicks 'My Enrollments', sees all enrollments" do
@@ -25,7 +26,7 @@ So that I can know how I'm doing
 		click_link 'Profile'
 		click_link 'My Enrollments'
 
-		expect(page).to have_content('Course Title')
+		expect(page).to have_content('Course')
 		expect(page).to have_content(course.title)
 
 

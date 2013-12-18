@@ -1,4 +1,6 @@
 CourseTracker::Application.routes.draw do
+  resources :semesters
+
   resources :enrollments
 
   resources :courses
