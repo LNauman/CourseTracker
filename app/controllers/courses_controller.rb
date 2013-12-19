@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
 
   def show
     @user = current_user
-    @course = Course.find_by(teacher_id: @user.id)
+    @course = Course.find(params[:id])
     @students = []
     @all_enroll = Enrollment.where(course_id: @course.id)
     @all_enroll.each do |enrollment|

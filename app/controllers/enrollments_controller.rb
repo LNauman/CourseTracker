@@ -26,6 +26,7 @@ class EnrollmentsController < ApplicationController
     end
   end
 
+#   worse version of the above, to remember how I got to the above
 #   if @user = current_user 
 # 	@course = Course.find_by(teacher_id: @user.id)     
 #   @enrollment = Enrollment.find_by(course_id: @course)

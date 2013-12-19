@@ -37,24 +37,3 @@ So that I know how I'm doing
     
   end
 end
-
-
-# student.enrollments.
-
-# to get a students GPA I need to find all a students enrollments that correspond to a particular semester
-
-# I need to take each enrollment grade and divide it by the number of credits in the corresponding course
-
-# add them all together
-
-# divide that by the total number of credits for a given semester
-
-
-
-
-
-
-
-
-
-
