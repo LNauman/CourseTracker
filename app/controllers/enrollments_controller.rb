@@ -2,9 +2,9 @@ class EnrollmentsController < ApplicationController
 
   def index
     if current_user
-    @user = current_user
-    @student_enrollments = @user.enrollments
-    else
+      @user = current_user
+      @student_enrollments = @user.enrollments
+    else 
       flash[:notice] = "You aren't enrolled in any classes, you don't even go here!"
     end
   end

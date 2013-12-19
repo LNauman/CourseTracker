@@ -1,41 +1,60 @@
-# require 'spec_helper'
+require 'spec_helper'
 
-# feature 'student can view their gpa', %Q{
-# As a student
-# I want to see my GPA for a given semester
-# So that I know how I'm doing
-# } do
+feature 'student can view their gpa', %Q{
+As a student
+I want to see my GPA for a given semester
+So that I know how I'm doing
+} do
 
-#   # ACCEPTANCE CRITERIA
-#   #* I must be able to specificy a semester
-#   #* I must be provided with my GPA for the given semester
+  # ACCEPTANCE CRITERIA
+  #* I must be able to specificy a semester
+  #* I must be provided with my GPA for the given semester
   
-#   let(:user)        { FactoryGirl.create(:user, role: 'Student') }
-#   let(:semester)    { FactoryGirl.create(:semester) }
-#   let(:course3)     { FactoryGirl.create(:course, semester_id: semester.id, credits: 2) }
-#   let(:course4)     { FactoryGirl.create(:course, semester_id: semester.id, credits: 3) }
-#   let(:course5)     { FactoryGirl.create(:coure, semester_id: (semester.id + 1), credits: 4) }
-#   let(:enrollment1) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course3.id, grade: 3.5) }
-#   let(:enrollment2) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course4.id, grade: 2.1) }
-#   let(:enrollment3) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course5.id, grade: 1.2) }
+  let(:user)         { FactoryGirl.create(:user, role: 'Student') }
+  let!(:semester)    { FactoryGirl.create(:semester) }
+  let!(:course1)     { FactoryGirl.create(:course, semester_id: semester.id) }
+  let!(:course2)     { FactoryGirl.create(:course, semester_id: semester.id) }
+  let!(:course3)     { FactoryGirl.create(:course, semester_id: (semester.id + 1)) }
+  let!(:enrollment1) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course1.id, grade: 3.0) }
+  let!(:enrollment2) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course2.id, grade: 3.5) }
+  let!(:enrollment3) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course3.id, grade: 4.0) }
 
-#   scenario 'click on sgn out, logged out of account' do
-#     visit root_path
-#     click_link 'Sign In'
+  scenario 'If I click a semester I see my GPA for that course' do
+    visit root_path
+    click_link 'Sign In'
 
-#     fill_in 'Email', with: user.email 
-#     fill_in 'Password', with: user.password
-#     click_button 'Sign in'
-#     click_link 'Profile'
-#     click_link
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign in'
+    click_link 'Profile'
 
-#     click_link 'View My GPA'
-#     select 'Fall 2013', from: 'Semester'
-#     click_button 'Submit'
+    visit "/semesters/#{semester.id}"
+
+    expect(page).to have_content("Your GPA for #{course1.semester.name}: ")
+    expect(page).to have_content(3.25)
+
+    expect(page).to_not have_content(3.5)
     
-#     expect(page).to have_content('GPA for #{semester.name}:')
-#     expect(page).to have_content(2.66)
+  end
+end
 
-#     expect(page).to_not have_content(2.01)
-#   end
-# end
+
+# student.enrollments.
+
+# to get a students GPA I need to find all a students enrollments that correspond to a particular semester
+
+# I need to take each enrollment grade and divide it by the number of credits in the corresponding course
+
+# add them all together
+
+# divide that by the total number of credits for a given semester
+
+
+
+
+
+
+
+
+
+

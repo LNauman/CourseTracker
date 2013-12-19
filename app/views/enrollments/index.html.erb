@@ -10,11 +10,10 @@
 		<tbody>
 			<% @student_enrollments.each do |enrollment| %>
 				<tr>
-					<td><%= enrollment.course.title %></td>
+					<td><%= Course.find(enrollment[:course_id]).title %></td>
 					<td><%= enrollment.grade %></td>
-					<td><%= link_to "#{enrollment.course.semester.name}", '#' %><td>
+					<td><%= link_to "#{enrollment.course.semester.name}", "semesters/#{enrollment.course.semester.id}" %><td>
 				</tr>
-			<% end %>
+			<% end %>	
 		</tbody>
 	</table>
-	
