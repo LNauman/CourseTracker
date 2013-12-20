@@ -15,9 +15,10 @@ class EnrollmentsController < ApplicationController
 
   def update
     @enrollment = Enrollment.find(params[:id])
+    @course_id = @enrollment.course_id
     if @enrollment.course.teacher == current_user
       if @enrollment.update_attributes(grade: params[:enrollment][:grade])
-        redirect_to @enrollment, notice: 'Grade has been updated'
+        redirect_to "/courses/#{@course_id}", notice: 'Grade has been updated'
       else
       redirect_to @enrollment, notice: 'Failed to update, must be a number between 0 and 4'
       end

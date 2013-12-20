@@ -1,27 +1,29 @@
 class SemestersController < ApplicationController
   def show
-    @semester = Semester.find(params[:id])
+    def grade_pt_calc(enroll)
+      enroll[:grade] * enroll[:credits]
+    end
+    def gpa_calc
+    end
+
+    if current_user && current_user.role == 'Student'
+      @user = current_user
+      @student_enrollments = @user.enrollments
+      @semester = Semester.find(params[:id])
+      @semester_enrollments = []
+      @grade_points = []
+      @semester_credits = []
+      @student_enrollments.each do |enrollment|
+        if enrollment.course.semester == @semester
+          @semester_enrollments << enrollment
+        end
+      end
+        @semester_enrollments.each do |enroll|
+          @point = grade_pt_calc(enroll)   
+          @grade_points << @point
+          @semester_credits << enroll.credits
+        end  
+    end
+    @gpa = @grade_points.sum / @semester_credits.sum
   end
 end
-
-#   def show
-#     if current_user.role == 'Student'
-#       @semester_enrollments = []
-#       @student_enrollments = Enrollment.where(student_id: current_user.id)
-#       @semester = Semester.find(params[:id])
-#       @student_enrollments.each do |enrollment|
-#         if enrollment.course.semester == @semester
-#           @semester_enrollments << enrollment
-          
-#           @semester_enrollments
-#         end
-#       end
-#     end
-#   end    
-# end
-
-
-
-      # now I have all of the enrollments of a particular student in a particular semester
-      # I need to calculate the grade points for each enrollment and divide that by total credit hours
-      # that will equal the GPA

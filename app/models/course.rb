@@ -8,6 +8,5 @@ class Course < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :semester_id
   validates_presence_of :teacher_id
-  validates_presence_of :credits
 
 end

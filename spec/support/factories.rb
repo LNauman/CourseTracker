@@ -14,7 +14,6 @@ FactoryGirl.define do
 		sequence(:title){|n| "Course 10#{n}"}
 		semester_id 1
 		teacher_id 1
-		credits 3
 	end
 end
 
@@ -23,6 +22,7 @@ FactoryGirl.define do
 		student_id 1
 		course_id 1
 		grade 3.33
+		credits 3
 	end
 end
 
