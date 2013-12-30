@@ -28,10 +28,11 @@ class SemestersController < ApplicationController
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
       @enrollments.each do |enrollment|  
-        if enrollment.course.semester == @semester
+        if enrollment.course.semester == @semester 
           @semester_enrollments << enrollment 
         end
       end
+      @enrollments = @semester_enrollments.uniq_by {|c| c.course_id }
     end
   end
 

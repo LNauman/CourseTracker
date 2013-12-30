@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @semester_enrollments.each do |enrollment| %>
+          <% @enrollments.each do |enrollment| %>
             <tr>
               <td><%= enrollment.course.title %></td>
               <td><%= enrollment.course.enrollments.count %></td>
