@@ -7,9 +7,8 @@ feature 'Student can see what semester a given course is in', %Q{
 } do
 
 # ACCEPTANCE CRITERIA
-
-#* I must be able to view a course's semester when I am view all courses
-#* I must be able to click on a semster to see my GPA
+# * I must be able to view a course's semester when I am view all courses
+# * I must be able to click on a semster to see my GPA
   
   let(:user)        { FactoryGirl.create(:user, role: 'Student') }
   let!(:semester)    { FactoryGirl.create(:semester) }

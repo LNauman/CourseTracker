@@ -9,9 +9,13 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @students = []
     @all_enroll = Enrollment.where(course_id: @course.id)
+    @grades = []
     @all_enroll.each do |enrollment|
       @students << User.find_by(id: enrollment.student_id)
+      grade = enrollment.grade
+      @grades << grade
     end
+    @average = @grades.sum/@grades.count
   end
 
   def index

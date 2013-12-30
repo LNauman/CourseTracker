@@ -7,8 +7,8 @@ So that I know how I'm doing
 } do
 
   # ACCEPTANCE CRITERIA
-  #* I must be able to specificy a semester
-  #* I must be provided with my GPA for the given semester
+  # * I must be able to specificy a semester
+  # * I must be provided with my GPA for the given semester
   
   let(:user)         { FactoryGirl.create(:user, role: 'Student') }
   let!(:semester)    { FactoryGirl.create(:semester) }

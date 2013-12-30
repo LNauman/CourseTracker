@@ -30,7 +30,7 @@
 			</tbody>
 	</table>
 
-<% else %>
+<% elsif current_user.role == 'Student'%>
 	<h1>Courses Offered</h1>
 		<table>
 			<thead>
@@ -46,6 +46,24 @@
 				<% end %>
 			</tbody>
 	</table>
+
+<% else %>
+	<h1>Courses</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Course Title</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @all_courses.each do |course| %>
+					<tr>
+						<td><%= link_to course.title, course_path(course) %></td>
+						<td><%= course.semester.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
 <% end %>
 
 <%= link_to 'Back', "users/#{@user.id}" %>

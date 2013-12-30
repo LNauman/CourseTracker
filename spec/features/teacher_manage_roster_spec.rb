@@ -7,10 +7,10 @@ So that I can add grades and view students
 } do
 
   # ACCEPTANCE CRITERIA
-  #* I should be able to view all the names and grades of
-  #  students enolled in the courses I teach
-  #* I should be able to add a grade for a student if it is blank
-  #* A student should not be able to enter their own grade
+  # * I should be able to view all the names and grades of
+  #   students enolled in the courses I teach
+  # * I should be able to add a grade for a student if it is blank
+  # * A student should not be able to enter their own grade
 
   let(:user)           { FactoryGirl.create(:user, role: 'Teacher') }
   let!(:user1)         { FactoryGirl.create(:user, role: 'Student') }

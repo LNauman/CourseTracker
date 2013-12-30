@@ -6,7 +6,7 @@ feature 'user signs up', %Q{
   So that I can make changes and view other lists
 } do
 
-  # Acceptance Criteria: 
+  # ACCEPTANCE CRITERIA: 
   # * I must specify a valid email address
   # * I must specify a password, and confirm that password
   # * If I do not perform the above, I get an error message

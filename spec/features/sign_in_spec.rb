@@ -6,7 +6,7 @@ feature 'user signs in', %Q{
   So that I can access my account
 } do
   
-  # Acceptance  Criteria:
+  # ACCEPTANCE CRITERIA:
   # * If I specify a valid, previously registered email and password,
   #   I am authenticated and gain access to the system
   # * If I specify an invalid email and password, I remain unauthenticated

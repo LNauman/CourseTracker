@@ -7,9 +7,9 @@ So that I can know how I'm doing
 } do
 
 	# ACCEPTANCE CRITERIA
-	#* I should see a 'My Enrollments' button if I am logged in
-	#* When I click 'My Enrollments' I will be taken to a page where I see all 
-	#  courses I am enrolled in
+	# * I should see a 'My Enrollments' button if I am logged in
+	# * When I click 'My Enrollments' I will be taken to a page where I see all 
+	#   courses I am enrolled in
 
 	let(:user)         { FactoryGirl.create(:user, role: 'Student') }
 	let(:semester)     { FactoryGirl.create(:semester) }

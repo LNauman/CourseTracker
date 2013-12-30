@@ -7,8 +7,8 @@ So that I can manage them
 } do
 
 	# ACCEPTANCE CRITERIA
-	#* I should see a 'View My Courses' button if I am logged in
-	#* When I click 'view courses' I should be able to see all of the courses
+	# * I should see a 'View My Courses' button if I am logged in
+	# * When I click 'view courses' I should be able to see all of the courses
 
 	let(:user)     { FactoryGirl.create(:user) }
 	let!(:course1) { FactoryGirl.create(:course, teacher_id: user.id) }
