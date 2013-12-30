@@ -1,0 +1,18 @@
+<% if current_user.role =='Administrator' %>
+    <table>
+      <thead>
+        <tr>
+          <th>Semesters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @semesters.each do |semester| %>
+          <tr>
+            <td><%= link_to semester.name, "semesters/#{semester.id}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'Back', "#" %>

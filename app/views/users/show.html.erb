@@ -4,8 +4,13 @@
 			<li><%= link_to "View Courses", courses_path %></li>
 			<li><%= link_to "My Enrollments", enrollments_path %></li>
 		</ul>
-	<% else %>
+	<% elsif @user == current_user && @user.role == 'Teacher' %>
 		<ul>
 			<li><%= link_to "View Courses", courses_path %></li>
 		</ul>
+	<% else %>
+		<ul>
+			<li><%= link_to "View Courses", courses_path %></li>
+			<li><%= link_to "View Semesters", semesters_path%></li>
+		</ul>	
 	<% end %>
