@@ -15,7 +15,11 @@ class CoursesController < ApplicationController
       grade = enrollment.grade
       @grades << grade
     end
-    @average = @grades.sum/@grades.count
+    if @grades.empty?
+      redirect_to courses_path, notice: 'There are no enrollments for that course!'
+    else
+      @average = @grades.sum/@grades.count
+    end
   end
 
   def index
