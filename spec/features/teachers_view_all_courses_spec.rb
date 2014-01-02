@@ -27,7 +27,7 @@ So that I can manage them
 		expect(page).to have_content(course1.title)
 		expect(page).to have_content('Back')
 
-		expect(page).to_not have_content('View Courses')
+		expect(page).to_not have_content('View Semesters')
 	end
 end
 

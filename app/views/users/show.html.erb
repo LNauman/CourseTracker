@@ -1,16 +1,18 @@
-<h1> Welcome to your Course Tracker </h1>
+<div class="row">
+  <div class="header"><h1> Welcome to your Course Tracker </h1></div>
+</div>
 	<% if @user == current_user && @user.role == 'Student' %>
-		<ul>
-			<li><%= link_to "View Courses", courses_path %></li>
-			<li><%= link_to "My Enrollments", enrollments_path %></li>
-		</ul>
+		<div class="large-4 large-centered columns">
+			<a href="/courses" class="button">View Courses</a>
+			<a href="/enrollments" class="button">My Enrollments</a>
+		</div>	
 	<% elsif @user == current_user && @user.role == 'Teacher' %>
-		<ul>
-			<li><%= link_to "View Courses", courses_path %></li>
-		</ul>
+		<div class="large-2 large-centered columns">
+			<a href="/courses" class="button">View Courses</a>
+		</div>
 	<% else %>
-		<ul>
-			<li><%= link_to "View Courses", courses_path %></li>
-			<li><%= link_to "View Semesters", semesters_path%></li>
-		</ul>	
+		<div class="large-4 large-centered columns">
+			<a href="/courses" class="button">View Courses</a>
+			<a href="/semesters" class="button">View Semesters</a>
+		</div>
 	<% end %>

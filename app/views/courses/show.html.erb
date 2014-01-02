@@ -3,12 +3,13 @@
 	
 <% else %>
 	<h1>Students in <%= @course.title %></h1>	
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>First Name</th>
-					<th>Last Nauman</th>
-					<th>Student ID</th>
+					<th class="header">First Name</th>
+					<th class="header">Last Nauman</th>
+					<th class="header">Student ID</th>
+					<th class="header">Grade</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,4 +26,4 @@
 			</tbody>
 		</table>
 <% end %>
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', courses_path, class: "button" %>

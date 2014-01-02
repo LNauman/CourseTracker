@@ -35,5 +35,5 @@ class CoursesController < ApplicationController
         @not_teacher_courses << course
       end
     end
-  end   
+  end 
 end

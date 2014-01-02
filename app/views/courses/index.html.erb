@@ -1,41 +1,51 @@
 <% if current_user.role =='Teacher' %>
-	<h1>My Courses</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Course Title</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @teacher_courses.each do |course| %>
-					<tr>
-						<td><%= link_to course.title, course_path(course) %></td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	<h1>Other Courses</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Course Title</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @not_teacher_courses.each do |course| %>
-					<tr>
-						<td><%= course.title %></td>
-					</tr>
-				<% end %>
-			</tbody>
-	</table>
+	<div class="row">
+		<div class="large-6 columns">
+			<h1 class="header">My Courses</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Course Title</th>
+							<th>Semester</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @teacher_courses.each do |course| %>
+							<tr>
+								<td><%= link_to course.title, course_path(course) %></td>
+								<td><%= course.semester.name %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+		</div>
+		<div class="large-6 columns">
+			<h1 class="header">Other Courses</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Course Title</th>
+							<th>Semester<th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @not_teacher_courses.each do |course| %>
+							<tr>
+								<td><%= course.title %></td>
+								<td><%= course.semester.name %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+		</div>
+	</div>
 
-<% elsif current_user.role == 'Student'%>
-	<h1>Courses Offered</h1>
-		<table>
+<% elsif current_user.role == 'Student'%>	
+	<h1 class="header">Courses Offered</h1>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Course Title</th>
+					<th class="header">Course Title</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,12 +58,12 @@
 	</table>
 
 <% else %>
-	<h1>Courses</h1>
-		<table>
+	<h1 class="header">Courses</h1>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Course Title</th>
-					<th>Semester</th>
+					<th class="header">Course Title</th>
+					<th class="header">Semester</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -67,4 +77,4 @@
 		</table>
 <% end %>
 
-<%= link_to 'Back', "users/#{@user.id}" %>
+<%= link_to 'Back', "users/#{@user.id}", class: "button" %>

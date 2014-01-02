@@ -12,3 +12,36 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+
+.form {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  width: 40%;
+
+}
+
+a.button {
+  background-color: #9B111E;
+  
+}
+a.button:hover {
+  background-color: #660000;
+}
+
+.top-bar .name h1 {
+  color: white;
+}
+ .header {
+  text-align: center;
+ }
+
+.table {
+position: absolute;
+left: 30%;
+right: 30%;
+width: 40%;
+border-color: #9B111E;
+border-width: 2px;  
+border-bottom: 2px;
+}
