@@ -6,12 +6,11 @@ class SemestersController < ApplicationController
 
     if current_user && current_user.role == 'Student'
       @user = current_user
-      @student_enrollments = @user.enrollments
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
       @grade_points = []
       @semester_credits = []
-      @student_enrollments.each do |enrollment|  
+      @user.enrollments.each do |enrollment|  
         if enrollment.course.semester == @semester
           @semester_enrollments << enrollment
         end
@@ -23,10 +22,9 @@ class SemestersController < ApplicationController
         end
       @gpa = @grade_points.sum / @semester_credits.sum
     elsif current_user && current_user.role == 'Administrator'
-      @enrollments = Enrollment.all
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
-      @enrollments.each do |enrollment|  
+      Enrollment.all.each do |enrollment|  
         if enrollment.course.semester == @semester 
           @semester_enrollments << enrollment 
         end
@@ -43,6 +41,6 @@ class SemestersController < ApplicationController
       @semesters = Semester.all.order(:name)
     else
       redirect_to root_path, notice: "You're not authorized to view this page"
-   end
- end
+    end
+  end
 end

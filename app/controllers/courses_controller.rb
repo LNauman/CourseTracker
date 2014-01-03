@@ -32,12 +32,6 @@ class CoursesController < ApplicationController
     if current_user
       @user = current_user
       @all_courses = Course.all
-      # @user_id = @user.id
-      @courses = current_user.courses
-      # @not_teacher_courses = []
-      # @all_courses.each do |course|
-      #   if course.teacher_id == @user.id && @user.role == 'Teacher'
-      #     @teacher_courses << course
     else
       redirect_to root_path, notice: "You need to sign in to see this page"
     end
