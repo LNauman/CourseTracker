@@ -1,11 +1,19 @@
 class EnrollmentsController < ApplicationController
 
+  def show
+    if current_user
+      @enrollment = Enrollment.find(params[:id])
+    else
+      redirect_to root_path, notice: "You aren't enrolled in any classes, you don't even go here!"
+    end
+  end
+
   def index
     if current_user
       @user = current_user
       @student_enrollments = @user.enrollments
     else 
-      flash[:notice] = "You aren't enrolled in any classes, you don't even go here!"
+      redirect_to root_path, notice: "You aren't enrolled in any classes, you don't even go here!"
     end
   end
 
@@ -39,10 +47,6 @@ class EnrollmentsController < ApplicationController
 #   		end
 #   end
 # end
-
-  def show
-    @enrollment = Enrollment.find(params[:id])
-  end
 
   protected
 

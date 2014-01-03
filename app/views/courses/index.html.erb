@@ -1,4 +1,4 @@
-<% if current_user.role =='Teacher' %>
+<% if @user.role =='Teacher' %>
 	<div class="row">
 		<div class="large-6 columns">
 			<h2 class="header">My Courses</h1>
@@ -10,7 +10,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @teacher_courses.each do |course| %>
+						<% @courses.each do |course| %>
 							<tr>
 								<td><%= link_to course.title, course_path(course) %></td>
 								<td><%= course.semester.name if course.semester %></td>
@@ -20,7 +20,7 @@
 				</table>
 		</div>
 		<div class="large-6 columns">
-			<h2 class="header">Other Courses</h1>
+			<h2 class="header">All Courses Offered</h1>
 				<table class="table">
 					<thead>
 						<tr>
@@ -29,7 +29,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% @not_teacher_courses.each do |course| %>
+						<% @all_courses.each do |course| %>
 							<tr>
 								<td><%= course.title %></td>
 								<td><%= course.semester.name if course.semester %></td>
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-<% elsif current_user.role == 'Student'%>	
+<% elsif @user.role == 'Student'%>	
 	<h2 class="header">Courses Offered</h1>
 		<table class="table">
 			<thead>

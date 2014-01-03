@@ -31,6 +31,7 @@ gem 'devise'
 gem 'zurb-foundation'
 gem 'simple_form'
 gem 'dragonfly', '~> 1.0.2'
+gem 'slim'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

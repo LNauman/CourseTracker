@@ -22,7 +22,7 @@ class SemestersController < ApplicationController
           @semester_credits << enroll.credits
         end
       @gpa = @grade_points.sum / @semester_credits.sum
-    else
+    elsif current_user && current_user.role == 'Administrator'
       @enrollments = Enrollment.all
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
@@ -32,11 +32,17 @@ class SemestersController < ApplicationController
         end
       end
       @enrollments = @semester_enrollments.uniq_by {|c| c.course_id }
+    else
+      redirect_to root_path, notice: "You're not authorized to view this page"
     end
   end
 
   def index
-    @semesters = Semester.all.order(:name)
-    @user = current_user
-  end
+    if current_user && current_user.role == 'Administrator'
+      @user = current_user
+      @semesters = Semester.all.order(:name)
+    else
+      redirect_to root_path, notice: "You're not authorized to view this page"
+   end
+ end
 end

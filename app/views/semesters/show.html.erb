@@ -1,4 +1,4 @@
-<% if @user == current_user && @user.role == 'Student' %>
+<% if @user %>
   <h2 class="header">Your GPA for <%= @semester.name %>: </h2>
   <h3 class="header"><%= @gpa.round(2) %></h3>
     <div class="back-button">
