@@ -1,7 +1,7 @@
 <% if current_user.role =='Teacher' %>
 	<div class="row">
 		<div class="large-6 columns">
-			<h1 class="header">My Courses</h1>
+			<h2 class="header">My Courses</h1>
 				<table class="table">
 					<thead>
 						<tr>
@@ -13,14 +13,14 @@
 						<% @teacher_courses.each do |course| %>
 							<tr>
 								<td><%= link_to course.title, course_path(course) %></td>
-								<td><%= course.semester.name %></td>
+								<td><%= course.semester.name if course.semester %></td>
 							</tr>
 						<% end %>
 					</tbody>
 				</table>
 		</div>
 		<div class="large-6 columns">
-			<h1 class="header">Other Courses</h1>
+			<h2 class="header">Other Courses</h1>
 				<table class="table">
 					<thead>
 						<tr>
@@ -32,7 +32,7 @@
 						<% @not_teacher_courses.each do |course| %>
 							<tr>
 								<td><%= course.title %></td>
-								<td><%= course.semester.name %></td>
+								<td><%= course.semester.name if course.semester %></td>
 							</tr>
 						<% end %>
 					</tbody>
@@ -41,7 +41,7 @@
 	</div>
 
 <% elsif current_user.role == 'Student'%>	
-	<h1 class="header">Courses Offered</h1>
+	<h2 class="header">Courses Offered</h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -58,7 +58,7 @@
 	</table>
 
 <% else %>
-	<h1 class="header">Courses</h1>
+	<h2 class="header">Courses</h1>
 		<table class="table">
 			<thead>
 				<tr>
@@ -70,11 +70,13 @@
 				<% @all_courses.each do |course| %>
 					<tr>
 						<td><%= link_to course.title, course_path(course) %></td>
-						<td><%= course.semester.name %></td>
+						<td><%= course.semester.name if course.semester%></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
 <% end %>
 
-<%= link_to 'Back', "users/#{@user.id}", class: "button" %>
+<div class="back-button">
+	<%= link_to 'Back', "users/#{@user.id}", class: "button" %>
+</div>

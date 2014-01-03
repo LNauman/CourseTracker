@@ -23,7 +23,6 @@ class SemestersController < ApplicationController
         end
       @gpa = @grade_points.sum / @semester_credits.sum
     else
-      
       @enrollments = Enrollment.all
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
@@ -38,5 +37,6 @@ class SemestersController < ApplicationController
 
   def index
     @semesters = Semester.all.order(:name)
+    @user = current_user
   end
 end

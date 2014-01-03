@@ -30,7 +30,7 @@ feature 'Administrator can see what semester a given course is in', %Q{
     click_link 'View Courses'
     click_link course1.title
 
-    expect(page).to have_content("Average grade for #{course1.title}(#{course1.semester.name}) is: ")
+    expect(page).to have_content("Average grade for #{course1.title + " "}(#{course1.semester.name}) is: ")
     expect(page).to have_content(2.72)
   
     expect(page).to_not have_content('View Courses')

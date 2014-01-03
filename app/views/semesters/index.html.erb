@@ -15,4 +15,7 @@
   </table>
 <% end %>
 
-<a href="#" class="button">Back</a>
+
+<div class="back-button">
+  <%= link_to 'Back', "users/#{@user.id}", class: "button" %>
+</div>

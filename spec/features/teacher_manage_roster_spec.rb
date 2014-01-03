@@ -44,7 +44,7 @@ So that I can add grades and view students
     fill_in 'Password', with: user.password
     click_button 'Sign in'
 
-    visit "enrollments/#{enrollment1.id}"
+    visit "/enrollments/#{enrollment1.id}"
 
     fill_in 'enrollment[grade]', with: 3.2
     click_button 'Submit'
@@ -62,7 +62,7 @@ So that I can add grades and view students
     fill_in 'Password', with: user.password
     click_button 'Sign in'
 
-    visit "enrollments/#{enrollment1.id}"
+    visit "/enrollments/#{enrollment1.id}"
 
     fill_in 'enrollment[grade]', with: -5.2
     click_button 'Submit'

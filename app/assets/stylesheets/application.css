@@ -21,6 +21,12 @@
 
 }
 
+.back-button {
+  position: relative;
+  left: 1em;
+  top: 13em;
+}
+
 a.button {
   background-color: #9B111E;
   
@@ -37,11 +43,11 @@ a.button:hover {
  }
 
 .table {
-position: absolute;
+position: relative;
 left: 30%;
 right: 30%;
+bottom: -30%;
 width: 40%;
 border-color: #9B111E;
 border-width: 2px;  
-border-bottom: 2px;
 }

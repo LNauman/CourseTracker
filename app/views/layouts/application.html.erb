@@ -27,7 +27,7 @@
      <nav class="top-bar">
       <ul class="title-area">
         <li class="name">
-          <h1>Course Tracker</h1>
+          <h1><%= link_to 'Course Tracker', root_path %></h1>
         </li>
       </ul>  
       <section class="top-bar-section">
@@ -46,7 +46,7 @@
       </div>
     </nav>
 
-    <p><%= notice %></p> 
+    <p><%= notice %><p>
     <p><%= alert %></p>
 
     <%= yield %>

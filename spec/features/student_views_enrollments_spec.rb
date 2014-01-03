@@ -33,6 +33,21 @@ So that I can know how I'm doing
 		expect(page).to_not have_content('View Courses')
 	end
 
-	scenario 'If user role is not a teacher they cannot teach courses'
+	scenario 'If user is not a teacher they cannot edit grades' do
+		visit root_path
+		click_link 'Sign In'
+
+		fill_in 'Email', with: user.email
+		fill_in 'Password', with: user.password
+		click_button 'Sign in'
+		
+		visit  "/enrollments/#{enrollment1.id}"
+
+		click_button 'Submit'
+
+		expect(page).to have_content("Not authorized to edit")
+
+		expect(page).to_not have_content("Grade has been updated")
+	end
 end
 

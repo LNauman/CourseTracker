@@ -1,6 +1,7 @@
-<h1>Update Grade</h1>
-  <%= form_for @enrollment do |f| %>
-    <%= f.label "Grade" %>
-    <%= f.text_field :grade, in: 0..4, step: 0.10 %>
-    <%= f.submit 'Submit' %>
-  <% end %>
+<h1 class="header">Update Grade</h1>
+  <div class="form">
+    <%= simple_form_for @enrollment do |f| %>
+      <%= f.input :grade, in: 0..4, step: 0.10 %>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
