@@ -9,5 +9,5 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, notice: 'You need to sign in to see this page'
     end
-  end
+  end 
 end

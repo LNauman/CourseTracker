@@ -7,8 +7,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="header">First Name</th>
-					<th class="header">Last Nauman</th>
+					<th class="header">Full Name</th>
 					<th class="header">Student ID</th>
 					<th class="header">Grade</th>
 				</tr>
@@ -17,8 +16,7 @@
 				<% @students.each do |student| %>
 					<% @enrollment = Enrollment.find_by(course_id: @course.id, student_id: student.id) %>
 						<tr>
-							<td><%= student.first_name %></td>
-							<td><%= student.last_name %></td>
+							<td><%= student.full_name %></td>
 							<td><%= student.id %></td>
 							<td><%= @enrollment.grade %></td>
 							<td><%= link_to 'Edit', edit_enrollment_path(@enrollment) %></td>

@@ -34,22 +34,22 @@
 #     expect(page).to_not have_content(user2.first_name)
 #   end 
 
-#   scenario "If I am signed in as a student I cannot remove other students" do
-#     visit root_path
-#     click_link  'Sign In'
+  # scenario "If I am signed in as a student I cannot remove other students" do
+  #   visit root_path
+  #   click_link  'Sign In'
   
-#     fill_in 'Email', with: user2.email
-#     fill_in 'Password', with: user2.password
-#     click_button 'Sign in'
-#     click_link 'View Courses'
+  #   fill_in 'Email', with: user2.email
+  #   fill_in 'Password', with: user2.password
+  #   click_button 'Sign in'
+  #   click_link 'View Courses'
 
-#     visit "/courses/#{course1.id}"
+  #   visit "/courses/#{course1.id}"
 
-#     click_link 'Remove'
+  #   click_link 'Remove'
 
-#     expect(page).to have_content("Not authorized to edit")
-#     expect(page).to have_content('Remove')
+  #   expect(page).to have_content("Not authorized to edit")
+  #   expect(page).to have_content('Remove')
 
-#     expect(page).to_not have_content("Student has been removed successfully")
-#   end
+  #   expect(page).to_not have_content("Student has been removed successfully")
+  # end
 # end

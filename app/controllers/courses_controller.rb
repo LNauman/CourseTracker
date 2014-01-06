@@ -1,22 +1,16 @@
 class CoursesController < ApplicationController
 
-  def new
-    @course = Course.new
-  end
-
   def show
     if current_user && current_user.role == 'Student'
       redirect_to courses_path, notice: 'You are not authorized to view this page'
-    elsif
+    elsif current_user 
       @user = current_user
       @course = Course.find(params[:id])
       @students = []
-      @all_enroll = Enrollment.where(course_id: @course.id)
       @grades = []
-      @all_enroll.each do |enrollment|
+      Enrollment.where(course_id: @course.id).each do |enrollment|
         @students << User.find_by(id: enrollment.student_id)
-          grade = enrollment.grade
-        @grades << grade
+        @grades << enrollment.grade
       end
       if @grades.empty?
         redirect_to courses_path, notice: 'There are no enrollments for that course!'

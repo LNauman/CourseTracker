@@ -34,20 +34,7 @@ class EnrollmentsController < ApplicationController
       redirect_to @enrollment, notice: 'Not authorized to edit this field'
     end
   end
-
-#   worse version of the above, to remember how I got to the above
-#   if @user = current_user 
-# 	@course = Course.find_by(teacher_id: @user.id)     
-#   @enrollment = Enrollment.find_by(course_id: @course)
-#       if @enrollment.update_attributes(grade: params[:enrollment][:grade].to_f)
-#       	redirect_to @course, notice: "Grade has been updated"
-#       	return
-#     	else
-#       	redirect_to @enrollment, notice: "Must be a number between 0 and 4"
-#   		end
-#   end
-# end
-
+  
   protected
 
   def enrollment_params
