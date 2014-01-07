@@ -34,6 +34,13 @@ class EnrollmentsController < ApplicationController
       redirect_to @enrollment, notice: 'Not authorized to edit this field'
     end
   end
+
+  def destroy
+    @enrollment = Enrollment.find(params[:id])
+    @course_id = @enrollment.course_id
+    @enrollment.destroy
+    redirect_to "/courses/#{@course_id}", notice: 'Enrollment has been removed successfully'
+  end
   
   protected
 
