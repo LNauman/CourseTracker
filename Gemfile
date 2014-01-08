@@ -41,7 +41,6 @@ gem 'settingslogic'
 # Javascript
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'jquery-rails'
 # gem 'jbuilder', '~> 1.2'
 
 # CSS
@@ -58,7 +57,6 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 # gem 'zurb-foundation'
 gem 'dragonfly', '~> 1.0.2'
-gem 'slim'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -83,9 +81,7 @@ group :test, :development do
   gem 'capybara'
   gem 'factory_girl'
   gem 'launchy'
-  gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'launchy'
   gem 'shoulda'
   gem 'valid_attribute'
 end
