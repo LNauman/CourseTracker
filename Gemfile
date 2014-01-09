@@ -47,7 +47,7 @@ gem 'jquery-turbolinks'
 gem 'sass-rails','>= 4.0.1'
 gem 'coffee-rails','>= 4.0.1'
 gem 'uglifier', '>= 1.3.0'
-gem 'foundation-rails', '~> 5.0.2.0'
+# gem 'foundation-rails', '~> 5.0.2.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -55,7 +55,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
-# gem 'zurb-foundation'
+gem 'zurb-foundation'
 gem 'dragonfly', '~> 1.0.2'
 
 group :doc do
