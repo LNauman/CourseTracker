@@ -17,7 +17,7 @@ module Seeders
         Seeders::Users.users.each do |user|
           entry = User.find_by(email: user[:email])
           if entry.nil?
-            entry = User.new(user)
+            entry = User.create(user)
           else
             entry.update_attributes(user)
           end
