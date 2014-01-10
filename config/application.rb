@@ -23,5 +23,7 @@ module CourseTracker
     config.assets.enabled = true
 
     config.assets.initialize_on_precompile = true
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end
