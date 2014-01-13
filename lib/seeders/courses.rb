@@ -15,7 +15,7 @@ module Seeders
       end
       def seed
         Seeders::Courses.courses.each do |course|
-          entry = Course.find_by(title: course[:title])
+          entry = Course.find_by(title: course[:title], semester_id: course[:semester_id])
           if entry.nil?
             entry = Course.new(course)
           else
