@@ -9,3 +9,8 @@
 Seeders::Courses.seed
 Seeders::Enrollments.seed
 Seeders::Users.seed
+
+Semester.create(name: 'Spring 2012')
+Semester.create(name: 'Fall 2012')
+Semester.create(name: 'Spring 2013')
+Semester.create(name: 'Fall 2013')
