@@ -25,7 +25,8 @@ class CoursesController < ApplicationController
   def index
     if current_user
       @user = current_user
-      @all_courses = Course.all
+      @user_courses = @user.courses.page(params[:page]).per(6)
+      @all_courses = Course.all.page(params[:page]).per(6)
     else
       redirect_to root_path, notice: "You need to sign in to see this page"
     end

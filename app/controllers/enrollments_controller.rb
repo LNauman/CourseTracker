@@ -46,10 +46,10 @@ class EnrollmentsController < ApplicationController
 
   def import 
     if params[:file].blank?
-      flash.now[:notice] = "Please select a file to upload!"
+      redirect_to courses_path, notice: "Please select a file to upload!"
     else
       Enrollment.import(params[:file])
-      redirect_to root_path, notice: "Enrollments imported."
+      redirect_to courses_path, notice: "Enrollments imported."
     end
   end
 

@@ -58,6 +58,7 @@ gem 'devise'
 gem 'zurb-foundation'
 gem 'roo'
 gem 'dragonfly'
+gem 'kaminari'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
