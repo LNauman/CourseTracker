@@ -4,7 +4,7 @@
     <div class="back-button">
       <%= link_to 'Back', "/enrollments", class: "button" %>
     </div>
-<% else %>
+<% elsif @admin %>
   <% if @semester_enrollments.count == 0 %>
     <h4>There are no enrollments this semester!</h4>
   <% else %>  

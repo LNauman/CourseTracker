@@ -1,7 +1,9 @@
 CourseTracker::Application.routes.draw do
   resources :semesters
 
-  resources :enrollments
+  resources :enrollments do
+    collection { post :import }
+  end  
 
   resources :courses
 

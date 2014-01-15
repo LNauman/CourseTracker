@@ -56,7 +56,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'devise'
 gem 'zurb-foundation'
-gem 'dragonfly', '~> 1.0.2'
+gem 'roo'
+gem 'dragonfly'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
