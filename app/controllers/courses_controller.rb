@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
         @grades << enrollment.grade
       end
       if @grades.empty?
-        redirect_to courses_path, notice: 'There are no enrollments for that course!'
+        flash.now[:notice] = "There are no enrollments for this course. Why don't you upload some?"
       else
         @average = @grades.sum/@grades.count
       end

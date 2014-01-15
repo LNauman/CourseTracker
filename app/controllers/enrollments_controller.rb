@@ -1,3 +1,5 @@
+require 'csv'
+
 class EnrollmentsController < ApplicationController
 
   def show
@@ -41,7 +43,16 @@ class EnrollmentsController < ApplicationController
     @enrollment.destroy
     redirect_to "/courses/#{@course_id}", notice: 'Enrollment has been removed successfully'
   end
-  
+
+  def import 
+    if params[:file].blank?
+      flash.now[:notice] = "Please select a file to upload!"
+    else
+      Enrollment.import(params[:file])
+      redirect_to root_path, notice: "Enrollments imported."
+    end
+  end
+
   protected
 
   def enrollment_params

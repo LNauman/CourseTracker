@@ -22,6 +22,7 @@ class SemestersController < ApplicationController
         end
       @gpa = @grade_points.sum / @semester_credits.sum
     elsif current_user && current_user.role == 'Administrator'
+      @admin = current_user
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
       Enrollment.all.each do |enrollment|  
