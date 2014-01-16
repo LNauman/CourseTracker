@@ -3,6 +3,7 @@
 	<h7 class="average1"><%= @average %></h5>
 	<h2 class="header">Course Roster</h1>
 		<table class="table">
+			<div class="header"><%= paginate @students %></div>
 			<thead>
 				<tr>
 					<th class="header">Full Name</th>
@@ -28,6 +29,7 @@
 <% else @user.role == 'Teacher' %>
 	<h2 class="header">Course Roster</h1>
 		<table class="table">
+			<div class="header"><%= paginate @students %></div>
 			<thead>
 				<tr>
 					<th class="header">Full Name</th>

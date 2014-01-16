@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
         @students << User.find_by(id: enrollment.student_id)
         @grades << enrollment.grade
       end
+      @students = Kaminari.paginate_array(@students).page(params[:page]).per(6)
       if @grades.empty?
         @average = "There are no enrollments for this course. Why don't you upload some?"
       else
