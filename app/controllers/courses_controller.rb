@@ -2,8 +2,8 @@ class CoursesController < ApplicationController
 
   def show
     if current_user && current_user.role == 'Student'
-      redirect_to courses_path, notice: 'You are not authorized to view this page'
-    elsif current_user 
+      redirect_to courses_path, notice: 'You are not authorized to view that page'
+    elsif current_user
       @user = current_user
       @course = Course.find(params[:id])
       @students = []
@@ -13,12 +13,12 @@ class CoursesController < ApplicationController
         @grades << enrollment.grade
       end
       if @grades.empty?
-        flash.now[:notice] = "There are no enrollments for this course. Why don't you upload some?"
+        @average = "There are no enrollments for this course. Why don't you upload some?"
       else
-        @average = @grades.sum/@grades.count
+        @average = (@grades.sum/@grades.count).round(2)
       end
     else
-      redirect_to root_path, notice: "You need to sign in to see this page"  
+      redirect_to root_path, notice: "You need to sign in to see this page"
     end
   end
 
