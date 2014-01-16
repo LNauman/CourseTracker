@@ -41,11 +41,7 @@
 				</table>
 		</div>
 	</div>
-	<h5>Import Enrollments</h5>
-		<%= form_tag import_enrollments_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= submit_tag "Import" %>
-		<% end %>
+	
 
 <% elsif @user.role == 'Student'%>	
 	<h2 class="header">Courses Offered</h1>

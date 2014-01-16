@@ -1,15 +1,17 @@
 <% if @user.role == 'Administrator' %>
 	<h3 class="header">Average grade for <%= @course.title + " " %>(<%= @course.semester.name %>) is: </h3>
 	<h3 class="header"><%= @average.round(2) %></h3>
-	
+
 <% else @user.role == 'Teacher' %>
-	<h2 class="header">Students in <%= @course.title %></h1>	
+	<h2 class="header">Students in <%= @course.title %></h1>
 		<table class="table">
 			<thead>
 				<tr>
 					<th class="header">Full Name</th>
 					<th class="header">Student ID</th>
 					<th class="header">Grade</th>
+					<th class="header">Edit</th>
+					<th class="header">Remove</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +28,13 @@
 			</tbody>
 		</table>
 <% end %>
+
+<h5>Import Enrollments</h5>
+		<%= form_tag import_enrollments_path, multipart: true do %>
+			<%= file_field_tag :file %>
+			<%= hidden_field_tag :course_id, @course.id %>
+			<%= submit_tag "Import" %>
+		<% end %>
 
 <div class="back-button">
 	<%= link_to 'Back', courses_path, class: "button" %>

@@ -6,16 +6,18 @@ class Enrollment < ActiveRecord::Base
   validates_presence_of :course_id
   validates_presence_of :student_id
   validates_numericality_of :credits
-  validates_numericality_of :grade, 
-                            greater_than_or_equal_to: 0, 
+  validates_numericality_of :grade,
+                            greater_than_or_equal_to: 0,
                             less_than_or_equal_to: 4
-  def self.import(file)
+  def self.import(file, course_id)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
       enrollment = find_by_id(row["id"]) || new
-      enrollment.attributes = row.to_hash
+      row = row.to_hash
+      row[:course_id] = course_id
+      enrollment.attributes = row
       enrollment.save!
     end
   end
