@@ -14,7 +14,7 @@ class EnrollmentsController < ApplicationController
     if current_user
       @user = current_user
       @student_enrollments = @user.enrollments
-    else 
+    else
       redirect_to root_path, notice: "You aren't enrolled in any classes, you don't even go here!"
     end
   end
@@ -44,12 +44,12 @@ class EnrollmentsController < ApplicationController
     redirect_to "/courses/#{@course_id}", notice: 'Enrollment has been removed successfully'
   end
 
-  def import 
+  def import
     if params[:file].blank?
-      redirect_to courses_path, notice: "Please select a file to upload!"
+      redirect_to :back, notice: "Please select a file to upload!"
     else
-      Enrollment.import(params[:file])
-      redirect_to courses_path, notice: "Enrollments imported."
+      Enrollment.import(params[:file], params[:course_id])
+      redirect_to :back, notice: "Enrollments imported."
     end
   end
 
