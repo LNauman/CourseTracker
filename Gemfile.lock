@@ -51,6 +51,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     choice (0.1.6)
     chronic (0.10.2)
     coderay (1.1.0)
@@ -191,6 +195,7 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     roo (1.11.2)
       nokogiri
       rubyzip
@@ -294,6 +299,7 @@ DEPENDENCIES
   binding_of_caller
   capistrano (~> 2.15.5)
   capybara
+  carrierwave
   chronic
   coffee-rails (>= 4.0.1)
   dalli
@@ -318,6 +324,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.0.2)
   rails-erd
+  rmagick
   roo
   rspec-rails
   sass-rails (>= 4.0.1)
