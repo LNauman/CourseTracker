@@ -1,0 +1,10 @@
+<h2>Upload Refrences</h2>
+  <%= form_for @refrence, multipart: true do |f| %>
+
+    <%= f.file_field :doc %>
+    <%= f.submit %>
+  <% end %>
+
+<div class="back-button">
+  <%= link_to 'Back', "/courses/#{@course.id}", class: "button" %>
+</div>

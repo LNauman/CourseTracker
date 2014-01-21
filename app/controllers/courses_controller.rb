@@ -1,9 +1,7 @@
 class CoursesController < ApplicationController
 
   def show
-    if current_user && current_user.role == 'Student'
-      redirect_to courses_path, notice: 'You are not authorized to view that page'
-    elsif current_user
+    if current_user
       @user = current_user
       @course = Course.find(params[:id])
       @students = []
@@ -18,7 +16,7 @@ class CoursesController < ApplicationController
       else
         @average = (@grades.sum/@grades.count).round(2)
       end
-    else
+    elsif
       redirect_to root_path, notice: "You need to sign in to see this page"
     end
   end
@@ -31,5 +29,25 @@ class CoursesController < ApplicationController
     else
       redirect_to root_path, notice: "You need to sign in to see this page"
     end
+  end 
+
+  def edit
+    @course = Course.find(params[:id])
+  end
+
+  def update
+    @course = Course.find(params[:id])
+    if @course.update_attributes(params[:refrence])
+      flash[:notice] = "Successfully updated course files."
+      redirect_to courses_path(@course)
+    else
+      render action: 'edit'
+    end
+  end
+
+  private
+
+  def course_params
+    params.require(:course).permit(:title, :semester_id, :teacher_id, :refrence)
   end
 end

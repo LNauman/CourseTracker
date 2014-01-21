@@ -1,0 +1,21 @@
+<div class="large-3 columns">
+  <h4 class="header">Upload Refrences</h4>
+  <%= form_for ([@course, @refrence]), multipart: true do |f| %>
+    <% if @refrence.errors.any? %>
+      <div id="error_explanation">
+        <h2> 
+          <%= pluralize(@refrence.errors.count, "error") %> prohibited this event from being saved:
+        </h2>
+        <ul>
+        <% @refrence.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.label :name %>
+    <%= f.text_field   :name %>
+    <%= f.file_field :doc %>
+    <%= f.submit %>
+  <% end %>   
+</div>

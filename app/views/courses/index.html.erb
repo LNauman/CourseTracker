@@ -44,7 +44,7 @@
 
 
 <% elsif @user.role == 'Student'%>
-	<h2 class="header">Courses Offered</h1>
+	<h2 class="header">Courses Offered</h2>
 		<table class="table">
 			<div class="header"><%= paginate @all_courses %></div>
 			<thead>
@@ -64,7 +64,7 @@
 	</table>
 
 <% else %>
-	<h2 class="header">Courses</h1>
+	<h2 class="header">Courses</h2>
 		<table class="table">
 			<div class="header"><%= paginate @all_courses %></div>
 			<thead>
