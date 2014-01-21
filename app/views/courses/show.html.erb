@@ -26,40 +26,92 @@
 				<% end %>
 			</tbody>
 		</table>
-<% else @user.role == 'Teacher' %>
-	<h2 class="header">Course Roster</h1>
-		<table class="table">
-			<div class="header"><%= paginate @students %></div>
-			<thead>
-				<tr>
-					<th class="header">Full Name</th>
-					<th class="header">Student ID</th>
-					<th class="header">Grade</th>
-					<th class="header">Edit</th>
-					<th class="header">Remove</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @students.each do |student| %>
-					<% @enrollment = Enrollment.find_by(course_id: @course.id, student_id: student.id) %>
+	<h5>Import Enrollments</h5>
+				<%= form_tag import_enrollments_path, multipart: true do %>
+					<%= file_field_tag :file %>
+					<%= hidden_field_tag :course_id, @course.id %>
+					<%= submit_tag "Import" %>
+				<% end %>	
+<% elsif @user.role == 'Teacher' %>
+	<div class="row">
+		<div class="large-6 columns">
+			<h2 class="header">Course Roster</h1>
+				<table class="table">
+					<div class="header"><%= paginate @students %></div>
+					<thead>
 						<tr>
-							<td><%= student.full_name %></td>
-							<td><%= student.id %></td>
-							<td><%= @enrollment.grade %></td>
-							<td><%= link_to 'Edit', edit_enrollment_path(@enrollment) %></td>
-							<td><%= link_to 'Remove', enrollment_path(@enrollment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<th class="header">Full Name</th>
+							<th class="header">Student ID</th>
+							<th class="header">Grade</th>
+							<th class="header">Edit</th>
+							<th class="header">Remove</th>
 						</tr>
+					</thead>
+					<tbody>
+						<% @students.each do |student| %>
+							<% @enrollment = Enrollment.find_by(course_id: @course.id, student_id: student.id) %>
+								<tr>
+									<td><%= student.full_name %></td>
+									<td><%= student.id %></td>
+									<td><%= @enrollment.grade %></td>
+									<td><%= link_to 'Edit', edit_enrollment_path(@enrollment) %></td>
+									<td><%= link_to 'Remove', enrollment_path(@enrollment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<h5>Import Enrollments</h5>
+				<%= form_tag import_enrollments_path, multipart: true do %>
+					<%= file_field_tag :file %>
+					<%= hidden_field_tag :course_id, @course.id %>
+					<%= submit_tag "Import" %>
 				<% end %>
-			</tbody>
-		</table>
+		</div>
+		<div class="large-6 columns">
+			<h2 class="header">Refrences</h1>			
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="header">Download</th>
+							<th class="header">File Name</th>
+						</tr>
+						</head>
+					<tbody>
+						<tr>
+							<% @course.refrences.each do |refrence| %>
+							<td><%= link_to (image_tag refrence.doc_url().to_s) if refrence.doc_url.present? %></td>
+							<td><%= refrence.name %></td>
+						</tr>
+						<% end %>	
+					</tbody>
+				</table>
+				<%= link_to 'Add Refrence', new_course_refrence_path(@course) %>
+		</div>
+	</div>
+<% else @user.role == 'Student' %>
+	<div class="row">
+		<div class="large-6 columns">
+			<h2 class="header">Refrences</h1>			
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="header">Download</th>
+							<th class="header">File Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<% @course.refrences.each do |refrence| %>
+							<td><%= link_to (image_tag refrence.doc_url().to_s) if refrence.doc_url.present? %></td>
+							<td><%= refrence.name %></td>
+						</tr>
+						<% end %>	
+					</tbody>
+				</table>
+			</div>
+		</div>
 <% end %>
 
-<h5>Import Enrollments</h5>
-		<%= form_tag import_enrollments_path, multipart: true do %>
-			<%= file_field_tag :file %>
-			<%= hidden_field_tag :course_id, @course.id %>
-			<%= submit_tag "Import" %>
-		<% end %>
 
 <div class="back-button">
 	<%= link_to 'Back', courses_path, class: "button" %>

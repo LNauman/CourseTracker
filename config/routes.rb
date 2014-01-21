@@ -1,4 +1,7 @@
 CourseTracker::Application.routes.draw do
+
+  resources :documents
+
   resources :semesters
 
   resources :enrollments do
@@ -11,7 +14,11 @@ CourseTracker::Application.routes.draw do
 
   resources :users, only: [:show, :index] do
     resources :courses
-  end
+    end  
+
+    resources :courses do
+      resources :refrences
+    end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
