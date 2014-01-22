@@ -9,7 +9,7 @@ class RefrencesController < ApplicationController
     @refrence = Refrence.new(refrence_params)
     @course = Course.find(params[:course_id])
     @refrence.course_id = @course.id
-    if @refrence.save
+    if @refrence.save!
       flash[:notice] = 'Your document has been added to this course'
       redirect_to course_path(@course)
     else
@@ -20,7 +20,7 @@ class RefrencesController < ApplicationController
   private
 
   def refrence_params
-    params.require(:refrence).permit(:doc, :course_id, :name)
+    params.require(:refrence).permit(:image, :course_id, :name)
   end
 
 end
