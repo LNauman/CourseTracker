@@ -1,6 +1,6 @@
 <div class="large-3 columns">
   <h4 class="header">Upload Refrences</h4>
-  <%= form_for ([@course, @refrence]), multipart: true do |f| %>
+  <%= form_for ([@course, @refrence]), html: {multipart: true} do |f| %>
     <% if @refrence.errors.any? %>
       <div id="error_explanation">
         <h2> 
@@ -15,7 +15,7 @@
     <% end %>
     <%= f.label :name %>
     <%= f.text_field   :name %>
-    <%= f.file_field :doc %>
+    <%= f.file_field :image %>
     <%= f.submit %>
   <% end %>   
 </div>

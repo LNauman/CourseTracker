@@ -305,7 +305,7 @@ DEPENDENCIES
   dalli
   database_cleaner
   devise
-  dragonfly
+  dragonfly (~> 1.0.2)
   exception_notification
   factory_girl
   faker
