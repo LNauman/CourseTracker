@@ -10,10 +10,10 @@ feature 'Student can see what semester a given course is in', %Q{
 # * I must be able to view a course's semester when I am view all courses
 # * I must be able to click on a semster to see my GPA
   
-  let(:user)        { FactoryGirl.create(:user, role: 'Student') }
-  let!(:semester)    { FactoryGirl.create(:semester) }
-  let!(:course1)     { FactoryGirl.create(:course, semester_id: semester.id) }
-  let!(:course2)     { FactoryGirl.create(:course, semester_id: semester.id) }
+  let(:user)                { FactoryGirl.create(:user, role: 'Student') }
+  let!(:semester)       { FactoryGirl.create(:semester) }
+  let!(:course1)        { FactoryGirl.create(:course, semester_id: semester.id) }
+  let!(:course2)        { FactoryGirl.create(:course, semester_id: semester.id) }
   let!(:enrollment1) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course1.id) }
   let!(:enrollment2) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course2.id) }
 

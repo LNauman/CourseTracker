@@ -12,9 +12,12 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+#used with procfile
 gem 'foreman'
 gem 'capistrano', '~> 2.15.5'
+#for memcached servers
 gem 'dalli'
+# for email noticifications
 gem 'exception_notification'
 
 # Server

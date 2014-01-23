@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "student can view courses enrolled in", %Q{
+feature 'student can view courses enrolled in', %Q{
 As a student
 I want to be able to see all of the courses I am enrolled in and grades
 So that I can know how I'm doing
@@ -11,9 +11,9 @@ So that I can know how I'm doing
 	# * When I click 'My Enrollments' I will be taken to a page where I see all 
 	#   courses I am enrolled in
 
-	let(:user)         { FactoryGirl.create(:user, role: 'Student') }
-	let(:semester)     { FactoryGirl.create(:semester) }
-	let(:course)       { FactoryGirl.create(:course, semester_id: semester.id) }
+	let(:user)                { FactoryGirl.create(:user, role: 'Student') }
+	let(:semester)        { FactoryGirl.create(:semester) }
+	let(:course)            { FactoryGirl.create(:course, semester_id: semester.id) }
 	let!(:enrollment1) { FactoryGirl.create(:enrollment, course_id: course.id, student_id: user.id) }
 
 	scenario "Clicks 'My Enrollments', sees all enrollments" do
@@ -45,9 +45,9 @@ So that I can know how I'm doing
 
 		click_button 'Submit'
 
-		expect(page).to have_content("Not authorized to edit")
+		expect(page).to have_content('Not authorized to edit')
 
-		expect(page).to_not have_content("Grade has been updated")
+		expect(page).to_not have_content('Grade has been updated')
 	end
 end
 

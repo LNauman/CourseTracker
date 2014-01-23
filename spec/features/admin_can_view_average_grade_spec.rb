@@ -11,10 +11,10 @@ feature 'Administrator can see what semester a given course is in', %Q{
   # * When I click on a specfic course I should be able to see the average grade for that course,
   #   for that specific semester
 
-  let(:user)         { FactoryGirl.create(:user, role: 'Administrator') }
-  let!(:semester)    { FactoryGirl.create(:semester) }
-  let!(:course1)     { FactoryGirl.create(:course, id: 5, semester_id: semester.id) }
-  let!(:course2)     { FactoryGirl.create(:course, semester_id: semester.id) }
+  let(:user)                { FactoryGirl.create(:user, role: 'Administrator') }
+  let!(:semester)       { FactoryGirl.create(:semester) }
+  let!(:course1)        { FactoryGirl.create(:course, id: 5, semester_id: semester.id) }
+  let!(:course2)        { FactoryGirl.create(:course, semester_id: semester.id) }
   let!(:enrollment1) { FactoryGirl.create(:enrollment, student_id: 4, course_id: course1.id) }
   let!(:enrollment2) { FactoryGirl.create(:enrollment, student_id: 3, course_id: course1.id, grade: 2.11) }
   let!(:enrollment3) { FactoryGirl.create(:enrollment, student_id: 4, course_id: course2.id) }

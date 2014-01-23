@@ -11,7 +11,7 @@ feature 'Administrator can view enrollment counts for all courses in a given sem
   # * When I click on a specfic semester I should see a list of all courses that are in that semester
   # * I should be able to see corresponding enrollment counts for each course
 
-  let(:user)          { FactoryGirl.create(:user, role: 'Administrator') }
+  let(:user)                { FactoryGirl.create(:user, role: 'Administrator') }
   let!(:semester1)    { FactoryGirl.create(:semester) }
   let!(:semester2)    { FactoryGirl.create(:semester, name: 'Spring 2013') }
 

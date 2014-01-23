@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "I can view all courses", %Q{
+feature 'I can view all courses', %Q{
 As a teacher
 I want to be able to see all of the courses
 So that I can manage them
@@ -10,7 +10,7 @@ So that I can manage them
 	# * I should see a 'View My Courses' button if I am logged in
 	# * When I click 'view courses' I should be able to see all of the courses
 
-	let(:user)     { FactoryGirl.create(:user) }
+	let(:user)         { FactoryGirl.create(:user) }
 	let!(:course1) { FactoryGirl.create(:course, teacher_id: user.id) }
 	let!(:course2) { FactoryGirl.create(:course, teacher_id: (user.id + 1)) }
 

@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
         @average = (@grades.sum/@grades.count).round(2)
       end
     elsif
-      redirect_to root_path, notice: "You need to sign in to see this page"
+      redirect_to root_path, notice: 'You need to sign in to see this page'
     end
   end
 
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
       @user_courses = @user.courses.page(params[:page]).per(6)
       @all_courses = Course.all.page(params[:page]).per(6)
     else
-      redirect_to root_path, notice: "You need to sign in to see this page"
+      redirect_to root_path, notice: 'You need to sign in to see this page'
     end
   end 
 
@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update_attributes(params[:refrence])
-      flash[:notice] = "Successfully updated course files."
+      flash[:notice] = 'Successfully updated course files.'
       redirect_to courses_path(@course)
     else
       render action: 'edit'

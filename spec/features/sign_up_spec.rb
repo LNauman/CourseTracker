@@ -24,11 +24,11 @@ feature 'user signs up', %Q{
 
     click_button 'Sign up'
 
-    expect(page).to have_content("Welcome! You have signed up successfully.")
-    expect(page).to have_content("Sign out")
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(page).to have_content('Sign out')
 
-    expect(page).to_not have_content("Sign up")
-    expect(page).to_not have_content("Sign in")
+    expect(page).to_not have_content('Sign up')
+    expect(page).to_not have_content('Sign in')
   end
     
   scenario 'required information is not supplied' do
@@ -37,7 +37,7 @@ feature 'user signs up', %Q{
     click_button 'Sign up'
 
     expect(page).to have_content("can't be blank")
-    expect(page).to_not  have_content("Sign out")
+    expect(page).to_not  have_content('Sign out')
   end
 
   scenario 'password confirmation does not match password' do
@@ -53,6 +53,6 @@ feature 'user signs up', %Q{
     click_button 'Sign up'
 
     expect(page).to have_content("doesn't match")
-    expect(page).to_not have_content("Sign out")
+    expect(page).to_not have_content('Sign out')
   end  
 end

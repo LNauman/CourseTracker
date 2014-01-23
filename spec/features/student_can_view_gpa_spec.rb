@@ -10,11 +10,11 @@ So that I know how I'm doing
   # * I must be able to specificy a semester
   # * I must be provided with my GPA for the given semester
   
-  let(:user)         { FactoryGirl.create(:user, role: 'Student') }
-  let!(:semester)    { FactoryGirl.create(:semester) }
-  let!(:course1)     { FactoryGirl.create(:course, semester_id: semester.id) }
-  let!(:course2)     { FactoryGirl.create(:course, semester_id: semester.id) }
-  let!(:course3)     { FactoryGirl.create(:course, semester_id: (semester.id + 1)) }
+  let(:user)                { FactoryGirl.create(:user, role: 'Student') }
+  let!(:semester)       { FactoryGirl.create(:semester) }
+  let!(:course1)        { FactoryGirl.create(:course, semester_id: semester.id) }
+  let!(:course2)        { FactoryGirl.create(:course, semester_id: semester.id) }
+  let!(:course3)        { FactoryGirl.create(:course, semester_id: (semester.id + 1)) }
   let!(:enrollment1) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course1.id, grade: 3.0) }
   let!(:enrollment2) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course2.id, grade: 3.5) }
   let!(:enrollment3) { FactoryGirl.create(:enrollment, student_id: user.id, course_id: course3.id, grade: 4.0) }

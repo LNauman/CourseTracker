@@ -46,10 +46,10 @@ class EnrollmentsController < ApplicationController
 
   def import
     if params[:file].blank?
-      redirect_to :back, notice: "Please select a file to upload!"
+      redirect_to :back, notice: 'Please select a file to upload!'
     else
       Enrollment.import(params[:file], params[:course_id])
-      redirect_to :back, notice: "Enrollments imported."
+      redirect_to :back, notice: 'Enrollments imported.'
     end
   end
 
