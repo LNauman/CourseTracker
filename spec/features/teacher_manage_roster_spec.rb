@@ -26,7 +26,7 @@ So that I can add grades and view students
     fill_in 'Email', with: user.email	
     fill_in 'Password', with: user.password
     click_button 'Sign in'
-    click_link 'Profile'
+    # click_link 'Profile'
     click_link 'View Courses'
     click_link 'Tester Title'
 

@@ -78,10 +78,10 @@
           <tbody>
             <tr>
               <% @course.refrences.each do |refrence|  %>
-                <td><%= image_tag refrence.image.thumb('400x200#').url if refrence.image_stored? %></td>
+                <td><%= link_to image_tag(refrence.image.thumb('100x100#').url), refrence.image.url if refrence.image_stored? %></td>
                 <td><%= refrence.name %></td>
-              <% end %>	
-            </tr>  
+            </tr> 
+              <% end %>	 
           </tbody>
         </table>
       <%= link_to 'Add Refrence', new_course_refrence_path(@course) %>
@@ -102,10 +102,10 @@
         <tbody>
         <tr>
           <% @course.refrences.each do |refrence| %>
-            <td><%= image_tag refrence.image.thumb('200x100#').url if refrence.image_stored? %></td>
-            <td><%= refrence.name %></td>
-          <% end %>	
+            <td><%= link_to image_tag(refrence.image.thumb('100x100#').url), refrence.image.url if refrence.image_stored? %></td>
+            <td><%= refrence.name %></td>	
         </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
