@@ -1,10 +1,10 @@
+$main-color: #9B111E;
 
 .form {
   position: absolute;
   left: 30%;
   right: 30%;
   width: 40%;
-
 }
 
 .back-button {
@@ -13,19 +13,20 @@
 }
 
 a.button {
-  background-color: #9B111E;
-
-}
-a.button:hover {
-  background-color: #660000;
-}
+  background-color: $main-color;
+  &:hover {
+    background-color: darken($main-color, 10%);
+  }
+}  
 
 .top-bar .name h1 {
   color: white;
 }
+
  .header {
   text-align: center;
  }
+
  .average {
   text-align: left;
  }
@@ -33,16 +34,15 @@ a.button:hover {
 .average1 {
   text-align: left;
   padding-left: 4em;
-  color: #9B111E;
+  color: $main-color;
  }
 
-
 .table {
-position: relative;
-left: 10%;
-right: 10%;
-bottom: -30%;
-width: 80%;
-border-color: #9B111E;
-border-width: 2px;
+  position: relative;
+  left: 10%;
+  right: 10%;
+  bottom: -30%;
+  width: 80%;
+  border-color: $main-color;
+  border-width: 2px;
 }
