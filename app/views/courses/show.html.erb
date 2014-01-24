@@ -78,7 +78,7 @@
           <tbody>
             <tr>
               <% @course.refrences.each do |refrence|  %>
-                <td><%= link_to image_tag(refrence.image.thumb('100x100#').url), refrence.image.url if refrence.image_stored? %></td>
+                <td><%= link_to image_tag(refrence.image.thumb('40x40#').url), refrence.image.url if refrence.image_stored? %></td>
                 <td><%= refrence.name %></td>
             </tr> 
               <% end %>	 
@@ -102,7 +102,7 @@
         <tbody>
         <tr>
           <% @course.refrences.each do |refrence| %>
-            <td><%= link_to image_tag(refrence.image.thumb('100x100#').url), refrence.image.url if refrence.image_stored? %></td>
+            <td><%= link_to image_tag(refrence.image.thumb('40x40#').url), refrence.image.url if refrence.image_stored? %></td>
             <td><%= refrence.name %></td>	
         </tr>
         <% end %>
