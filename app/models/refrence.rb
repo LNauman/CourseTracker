@@ -15,9 +15,10 @@ class Refrence < ActiveRecord::Base
 
   belongs_to  :course
 
-  validates_presence_of :course_id
-  validates_presence_of :name
-  validates_presence_of :image
+  validates :course_id, :name, :image, presence: true
+
+  delegate :teacher, to: :course
+
 
   # mount_uploader :doc, DocUploader
 

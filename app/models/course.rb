@@ -22,4 +22,6 @@ class Course < ActiveRecord::Base
   validates_presence_of :semester_id
   validates_presence_of :teacher_id
 
+  include GpaCalculations
+
 end

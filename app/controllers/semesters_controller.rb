@@ -1,10 +1,9 @@
 class SemestersController < ApplicationController
-  def show
-    def grade_pt_calc(enroll)
-      enroll[:grade] * enroll[:credits]
-    end
 
-    if current_user && current_user.role == 'Student'
+  def show
+
+    if current_user.student?
+      
       @user = current_user
       @semester = Semester.find(params[:id])
       @semester_enrollments = []
@@ -43,5 +42,11 @@ class SemestersController < ApplicationController
     else
       redirect_to root_path, notice: "You're not authorized to view this page"
     end
+  end
+
+  private
+
+  def grade_pt_calc(enroll)
+    enroll[:grade] * enroll[:credits]
   end
 end
